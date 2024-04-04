@@ -21,7 +21,7 @@ Film3D::Film3D(string name_, unsigned int nx_, unsigned int ny_, double M_norm_)
     srand48(time(NULL));
     for (unsigned int i=0; i<nx*ny; i++) {
         double thetaz=drand48()*2*M_PI;
-        double thetax=drand48()*2*M_PI;
+        double thetax=drand48()*M_PI;
         theta_data[i]=thetaz+I*thetax;
     }
     cout<<"Film3D "<<name<<" created @ "<<theta_data<<endl;
