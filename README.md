@@ -41,6 +41,11 @@ Remarque : on calcule les énergies totales en sommant sur tous les éléments d
 # Film3D
 Le but de cette classe est de considérer des aimantations 3D. Cette classe reprend la classe Film mais avec des éléments de matrice complexes : leurs parties réelles sont les valeur de theta comme pour la classe Film et leurs parties imaginaires servent à rajouter la 3e dimension aux aimantations.
 
+# main
+Dans le fichier main, on retrouvera les fonctions de minimisation : F_min pour les films 2D et F_min3D pour les films 3D. Il y a également un code préécrit pour appliquer F_min sur un film FePt 2D de dimensions $20\times20$ sur 100 000 itérations sans champ magnétique extérieur. Les directions d'aimantation résultant de cette minimisation seront stockées dans un fichier de données nommé FePt2020.txt.  
+
+Remarque : l'algorithme prend quelques minutes à s'exécuter.
+
 # Magnetization_Plot
 Ce fichier Python contient deux fonctions pour faire des plots des directions d'aimantation à partir des fichiers de données des angles générés à l'aide de la fonction write de la classe Film.
 - f(theta, title=' ') : pour faire des plots des directions d'aimantation. theta est le fichier de données à afficher et title et le titre qu'on veut éventuellement donner à la figure.
