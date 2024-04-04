@@ -38,6 +38,9 @@ Remarque : on calcule les énergies totales en sommant sur tous les éléments d
 
 - write(fich_name, A, Nxx, Nyy, Nzz, K, phi, H_a_norm) : même fonction que la première fonction write mais note en plus les constantes du système au début du fichier.
 
+# Film3D
+Le but de cette classe est de considérer des aimantations 3D. Cette classe reprend la classe Film mais avec des éléments de matrice complexes : leurs parties réelles sont les valeur de theta comme pour la classe Film et leurs parties imaginaires servent à rajouter la 3e dimension aux aimantations.
+
 # Magnetization_Plot
 Ce fichier Python contient deux fonctions pour faire des plots des directions d'aimantation à partir des fichiers de données des angles générés à l'aide de la fonction write de la classe Film.
 - f(theta, title=' ') : pour faire des plots des directions d'aimantation. theta est le fichier de données à afficher et title et le titre qu'on veut éventuellement donner à la figure.
