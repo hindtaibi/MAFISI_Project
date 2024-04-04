@@ -15,3 +15,16 @@ def f(theta, title=' '):   #theta is the angles data file written with the write
 	c.set_label(r'$\theta$ [°]')
 	plt.title(title)
 	plt.show()
+
+def gif(files) :   #files are all the data files that we want to put in the GIF
+	"""Function to create a GIF with many film plots"""
+	i=0
+	for file in files :
+		mask=(file>np.pi)
+		file[mask]-=np.pi
+		file*=180/np.pi
+		plt.imshow(file,cmap='gray_r',vmin=0,vmax=180)
+		plt.savefig(f'i'+str(i)+'.png')
+		i+=1
+	frames=np.stack([iio.imread(f'i{i}.png') for i in range(len(files))],axis=0)
+	iio.mimwrite('aimantation_0.gif',frames)
