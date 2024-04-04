@@ -1,0 +1,17 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import imageio as iio
+
+def f(theta, title=' '):   #theta is the angles data file written with the write function from the Film class
+	"""Function to plot angles. A black square corresponds to an angle of pi, a white square corresponds
+	to an angle of 0. An angle of theta is the same as the angle -theta[2pi]."""
+	mask=(theta>np.pi)  #We look for angles greater than pi
+	theta[mask]-=np.pi #In this case, we compute the opposite angle [2pi]
+	theta*=180/np.pi  #We convert the angle in degrees
+	#We plot the data using a gray colorbar :
+	fig=plt.figure()
+	im=plt.imshow(theta,cmap='gray_r',vmin=0,vmax=180)
+	c=fig.colorbar(im)
+	c.set_label(r'$\theta$ [°]')
+	plt.title(title)
+	plt.show()
