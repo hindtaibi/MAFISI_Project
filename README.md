@@ -37,3 +37,8 @@ On est aussi à deux dimensions pour $\vec{H_a}$ : $H_{a_x}=H_a\sin(\varphi)$, $
 Remarque : on calcule les énergies totales en sommant sur tous les éléments de la matrice Film.
 
 - write(fich_name, A, Nxx, Nyy, Nzz, K, phi, H_a_norm) : même fonction que la première fonction write mais note en plus les constantes du système au début du fichier.
+
+# Magnetization_Plot
+Ce fichier Python contient deux fonctions pour faire des plots des directions d'aimantation à partir des fichiers de données des angles générés à l'aide de la fonction write de la classe Film.
+f(theta, title=' ') : pour faire des plots des directions d'aimantation. theta est le fichier de données à afficher et title et le titre qu'on veut éventuellement donner à la figure.
+gif(files) : pour créer des GIF montrant l'évolution des aimantations d'un film magnétique. files est une liste contenant tous les fichiers de données des angles qu'on veut mettre dans le GIF.
