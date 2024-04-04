@@ -16,7 +16,7 @@ def f(theta, title=' '):   #theta is the angles data file written with the write
 	plt.title(title)
 	plt.show()
 
-def gif(files) :   #files are all the data files that we want to put in the GIF
+def gif(files) :   #files is the list containing all the data files that we want to put in the GIF
 	"""Function to create a GIF with many film plots"""
 	i=0
 	for file in files :
