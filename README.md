@@ -50,3 +50,4 @@ Remarque : l'algorithme prend quelques minutes à s'exécuter.
 Ce fichier Python contient deux fonctions pour faire des plots des directions d'aimantation à partir des fichiers de données des angles générés à l'aide de la fonction write de la classe Film.
 - f(theta, title=' ') : pour faire des plots des directions d'aimantation. theta est le fichier de données à afficher et title et le titre qu'on veut éventuellement donner à la figure.
 - gif(files) : pour créer des GIF montrant l'évolution des aimantations d'un film magnétique. files est une liste contenant tous les fichiers de données des angles qu'on veut mettre dans le GIF.
+Les fichiers .txt servent à faire fonctionner ces fonctions plot. Pour cela, on pourra simplement exécuter plot.ipynb. Il sera peut-être nécessaire d'installer la bibliothèque imageio.
