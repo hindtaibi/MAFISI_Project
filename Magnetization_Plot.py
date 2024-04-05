@@ -16,7 +16,7 @@ def f(theta, title=' '):   #theta is the angles data file written with the write
 	plt.title(title)
 	plt.show()
 
-def gif(files) :   #files is the list containing all the data files that we want to put in the GIF
+def gif(files, title='gif') :   #files is the list containing all the data files that we want to put in the GIF
 	"""Function to create a GIF with many film plots"""
 	i=0
 	for file in files :
@@ -27,4 +27,4 @@ def gif(files) :   #files is the list containing all the data files that we want
 		plt.savefig(f'i'+str(i)+'.png')
 		i+=1
 	frames=np.stack([iio.imread(f'i{i}.png') for i in range(len(files))],axis=0)
-	iio.mimwrite('aimantation_0.gif',frames)
+	iio.mimwrite(str(title)+'.gif',frames)
