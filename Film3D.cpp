@@ -122,10 +122,10 @@ double Film3D::E_ech(double A) {
                 thetaxy=imag(theta_data[find_i(x,y+1)]);
             E+=(sin(thetazx)*cos(thetaxx)-sin(thetaz)*cos(thetax))*(sin(thetazx)*cos(thetaxx)-sin(thetaz)*cos(thetax))/(4*lx*lx)
                +(sin(thetazy)*cos(thetaxy)-sin(thetaz)*cos(thetax))*(sin(thetazy)*cos(thetaxy)-sin(thetaz)*cos(thetax))/(4*ly*ly)
-                +(sin(thetazx)*sin(thetaxx)-sin(thetaz)*sin(thetax))*(sin(thetazx)*sin(thetaxx)-sin(thetaz)*sin(thetax))/(4*lx*lx)
-                 +(sin(thetazy)*sin(thetaxy)-sin(thetaz)*sin(thetax))*(sin(thetazy)*sin(thetaxy)-sin(thetaz)*sin(thetax))/(4*ly*ly)
-                  +(cos(thetazx)-cos(thetaz))*(cos(thetazx)-cos(thetaz))/(4*lx*lx)
-                   +(cos(thetazy)-cos(thetaz))*(cos(thetazy)-cos(thetaz))/(4*ly*ly);
+                +(sin(thetaxx)-sin(thetax))*(sin(thetaxx)-sin(thetax))/(4*lx*lx)
+                 +(sin(thetaxy)-sin(thetax))*(sin(thetaxy)-sin(thetax))/(4*ly*ly)
+                  +(cos(thetazx)*cos(thetaxx)-cos(thetaz)*cos(thetax))*(cos(thetazx)*cos(thetaxx)-cos(thetaz)*cos(thetax))/(4*lx*lx)
+                   +(cos(thetazy)*cos(thetaxy)-cos(thetaz)*cos(thetax))*(cos(thetazy)*cos(thetaxy)-cos(thetaz)*cos(thetax))/(4*ly*ly)
         }
     }
     return A*E*(4/3)*M_PI*lx*ly*lz*nx*ny;
@@ -135,11 +135,11 @@ double Film3D::E_d(double Nxx, double Nyy, double Nzz) {
     if (Nxx+Nyy+Nzz!=1.) cout<<"Warning: Nxx+Nyy+Nzz must be equal to 1"<<endl;
     double E=0.;
     for (unsigned int i=0; i<nx*ny; i++) {
-		double thetaz=real(theta_data[i]);
+	double thetaz=real(theta_data[i]);
         double thetax=imag(theta_data[i]);
-		E+=M_norm*M_norm*(Nxx*sin(thetaz)*cos(thetax)*sin(thetaz)*cos(thetax)
-                          +Nyy*sin(thetaz)*sin(thetax)*sin(thetaz)*sin(thetax)
-                           +Nzz*cos(thetaz)*cos(thetaz));
+	E+=M_norm*M_norm*(Nxx*sin(thetaz)*cos(thetax)*sin(thetaz)*cos(thetax)
+                          +Nyy*sin(thetax)*sin(thetax)
+                           +Nzz*cos(thetaz)*cos(thetax)*cos(thetaz)*cos(thetax));
 	}
     return (mu_0/2)*E*(4/3)*M_PI*lx*ly*lz*nx*ny;
 }
@@ -147,20 +147,21 @@ double Film3D::E_d(double Nxx, double Nyy, double Nzz) {
 double Film3D::E_ani(double K) {
     double E=0.;
     for (unsigned int i=0; i<nx*ny; i++) {
-		double thetaz=real(theta_data[i]);
-		E+=cos(thetaz)*cos(thetaz);
-	}
+	double thetaz=real(theta_data[i]);
+        double thetax=imag(theta_data[i]);
+	E+=cos(thetax)*cos(thetaz)*cos(thetax)*cos(thetaz);
+    }
     return K*E*(4/3)*M_PI*lx*ly*lz*nx*ny;
 }
 
 double Film3D::E_z(double phiz, double phix, double H_a_norm) {
     double E=0.;
     for (unsigned int i=0; i<nx*ny; i++) {
-		double thetaz=real(theta_data[i]);
+	double thetaz=real(theta_data[i]);
         double thetax=imag(theta_data[i]);
-		E+=M_norm*H_a_norm*(sin(thetaz)*cos(thetax)*sin(phiz)*cos(phix)
-                            +sin(thetaz)*sin(thetax)*sin(phiz)*sin(phix)
-                             +cos(thetaz)*cos(phiz));
+	E+=M_norm*H_a_norm*(sin(thetaz)*cos(thetax)*sin(phiz)*cos(phix)
+                            +sin(thetax)*sin(phix)
+                             +cos(thetaz)*cos(thetax)*cos(phiz)*cos(phix));
 	}
     return -mu_0*E*(4/3)*M_PI*lx*ly*lz*nx*ny;
 }
