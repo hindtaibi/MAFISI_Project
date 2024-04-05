@@ -125,7 +125,7 @@ double Film3D::E_ech(double A) {
                 +(sin(thetaxx)-sin(thetax))*(sin(thetaxx)-sin(thetax))/(4*lx*lx)
                  +(sin(thetaxy)-sin(thetax))*(sin(thetaxy)-sin(thetax))/(4*ly*ly)
                   +(cos(thetazx)*cos(thetaxx)-cos(thetaz)*cos(thetax))*(cos(thetazx)*cos(thetaxx)-cos(thetaz)*cos(thetax))/(4*lx*lx)
-                   +(cos(thetazy)*cos(thetaxy)-cos(thetaz)*cos(thetax))*(cos(thetazy)*cos(thetaxy)-cos(thetaz)*cos(thetax))/(4*ly*ly)
+                   +(cos(thetazy)*cos(thetaxy)-cos(thetaz)*cos(thetax))*(cos(thetazy)*cos(thetaxy)-cos(thetaz)*cos(thetax))/(4*ly*ly);
         }
     }
     return A*E*(4/3)*M_PI*lx*ly*lz*nx*ny;
