@@ -6,7 +6,7 @@ def f(theta, title=' '):   #theta is the angles data file written with the write
 	"""Function to plot angles. A black square corresponds to an angle of pi, a white square corresponds
 	to an angle of 0. An angle of theta is the same as the angle -theta[2pi]."""
 	mask=(theta>np.pi)  #We look for angles greater than pi
-	theta[mask]-=np.pi #In this case, we compute the opposite angle [2pi]
+	theta[mask]=np.pi-theta[mask]+np.pi #In this case, we compute the opposite angle [2pi]
 	theta*=180/np.pi  #We convert the angle in degrees
 	#We plot the data using a gray colorbar :
 	fig=plt.figure()
@@ -21,7 +21,7 @@ def gif(files, title='gif') :   #files is the list containing all the data files
 	i=0
 	for file in files :
 		mask=(file>np.pi)
-		file[mask]-=np.pi
+		file[mask]=np.pi-file[mask]+np.pi
 		file*=180/np.pi
 		plt.imshow(file,cmap='gray_r',vmin=0,vmax=180)
 		plt.savefig(f'i'+str(i)+'.png')
