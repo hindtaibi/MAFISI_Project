@@ -22,7 +22,7 @@ Film3D F_min3D(Film3D F, double A, double Nxx, double Nyy, double Nzz, double K,
 		double thetax_ini=imag(F(i));
         F(i)=drand48()*2*M_PI+I*thetax_ini;
         if (F.E_tot(A, Nxx, Nyy, Nzz, K, phiz, phix, H_a_norm)>=E_ini) {
-			F(i)=thetaz_ini+I*thetax_ini;
+		F(i)=real(F(i))+I*(-drand48()*M_PI/2+M_PI/2);
         }
         else {
             double E_ini=F.E_tot(A, Nxx, Nyy, Nzz, K, phiz, phix, H_a_norm);
